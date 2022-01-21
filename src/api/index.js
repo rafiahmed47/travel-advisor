@@ -5,14 +5,14 @@ export const getPlaceData = async (sw, ne) => {
     try {
         const { data: { data } } = await axios.get(URL, {
             params: {
-                bl_latitude: sw.lat,
-                bl_longitude: sw.lng,
-                tr_longitude: ne.lng,
-                tr_latitude: ne.lat
+                bl_latitude: sw?.lat,
+                bl_longitude: sw?.lng,
+                tr_longitude: ne?.lng,
+                tr_latitude: ne?.lat
             },
             headers: {
                 'x-rapidapi-host': 'travel-advisor.p.rapidapi.com',
-                'x-rapidapi-key': '95ef68e9d2mshbd4d35bdd1948e0p13ba37jsn06bceea9e6d3'
+                'x-rapidapi-key': '9b2168359amshd157f76b63bf86cp1d91a7jsn3415b366fb72'
             }
         });
         return data;
