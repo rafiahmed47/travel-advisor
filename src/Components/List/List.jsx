@@ -3,10 +3,9 @@ import { CircularProgress, Grid, Typography, InputLabel, MenuItem, FormControl, 
 import PlaceDetails from '../PlaceDetails/PlaceDetails'
 
 import useStyles from './styles';
-const List = ({ places, childClicked, isLoading }) => {
+const List = ({ places, childClicked, isLoading, type, setType, rating, setRating }) => {
     const classes = useStyles()
-    const [type, setType] = useState('restraurants');
-    const [rating, setRating] = useState('')
+    console.log({places})
     return (
         <div className={classes.container}>
             <Typography variant="h4">Restaurants, Hotels & Attraction around you</Typography>
@@ -34,7 +33,10 @@ const List = ({ places, childClicked, isLoading }) => {
                                 <MenuItem value={4.5}>Above 4.5</MenuItem>
                             </Select>
                         </FormControl>
-                        <Grid container spacing={3} className={classes.list}>
+                       {!places ? 
+                           <h1>there is no places in your region</h1>
+                       : 
+                           <Grid container spacing={3} className={classes.list}>
                             {
                                 places?.map((place, i) => (
                                     <Grid item key={i} xs={12}>
@@ -44,8 +46,7 @@ const List = ({ places, childClicked, isLoading }) => {
                                     </Grid>
                                 ))
                             }
-
-                        </Grid>
+                        </Grid>}
                     </>
                 )}
         </div>
